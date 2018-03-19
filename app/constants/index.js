@@ -1,9 +1,3 @@
-// import { NativeModules } from 'react-native;
-// const { StatusBarManager } = NativeModules;
-
-// export const STATUS_BAR_HEIGHT = StatusBarManager.HEIGHT;
-export const STATUS_BAR_HEIGHT = 12;
-
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER'
 export const DECREMENT_COUNTER = 'DECREMENT_COUNTER'
 
@@ -15,4 +9,11 @@ export const LOGIN_END = 'LOGIN_END'
 export const LOGIN_ERROR = 'LOGIN_ERROR'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS'
 
+export const GET_PRODUCTS = 'GET_PRODUCTS'
+export const GET_PRODUCTS_SUCCESS = 'GET_PRODUCTS_SUCCESS'
+export const GET_PRODUCTS_ERROR = 'GET_PRODUCTS_ERROR'
+export const GET_PRODUCTS_END = 'GET_PRODUCTS_END'
+
 export const LOGOUT = 'LOGOUT'
+export const CLOSE_MESSAGE = 'CLOSE_MESSAGE'
+

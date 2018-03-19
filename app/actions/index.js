@@ -6,8 +6,29 @@ import {
   LOGIN,
   LOGOUT,
   CHANGE_EMAIL,
-  CHANGE_PASSWORD
+  CHANGE_PASSWORD,
+  CLOSE_MESSAGE,
+  GET_PRODUCTS,
+  GET_PRODUCTS_SUCCESS,
 } from "../constants";
+
+export function getProducts() {
+  return {
+    type: GET_PRODUCTS,
+  }
+}
+
+export function getProductsSuccess() {
+  return {
+    type: GET_PRODUCTS_SUCCESS,
+  }
+}
+
+export function closeMessage() {
+  return {
+    type: CLOSE_MESSAGE,
+  }
+}
 
 export function changeEmail(email) {
   return {

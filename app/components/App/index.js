@@ -29,7 +29,7 @@ export class Counter extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        count: state.counterReducer.count
+        // count: state.counterReducer.count
     }
 }
 

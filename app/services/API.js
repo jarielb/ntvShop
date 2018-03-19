@@ -2,8 +2,6 @@ import Config from 'react-native-config'
 
 const headers = {
   'Content-Type': 'application/json',
-  'Cache-Control': 'no-cache',
-  'max-age': 0,
 };
     
 class API {
@@ -48,13 +46,8 @@ class API {
     let options = Object.assign({ method: verb }, params ? { body: JSON.stringify(params) } : null)
     options.headers = this.headers
     return fetch(url, options).then(resp => {
-      let json = resp.json()
-
-      if (resp.ok) { // eslint-disable-line no-unused-vars
-        return json
-      }
-      return json.then(err => { throw err })
-    })
+      return resp.json()
+    });
   }
 }
 

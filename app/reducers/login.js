@@ -8,14 +8,15 @@ import {
     LOGIN_ERROR,
     LOGOUT,
     CHANGE_EMAIL,
-    CHANGE_PASSWORD
+    CHANGE_PASSWORD,
+    CLOSE_MESSAGE
 } from "../constants";
 
 const initialState = {
     email: '',
     password: '',
     message: 'Reactive!',
-    error: '',
+    error: false,
     isLoggedIn: false,
     token: false,
 };
@@ -39,7 +40,13 @@ const loginReducer = (state = initialState, action) => {
         case LOGIN_ERROR:
             return {
                 ...state,
-                error: action.error
+                error: action.error.message
+            };
+
+        case CLOSE_MESSAGE:
+            return {
+                ...state,
+                error: false
             };
 
         case LOGOUT:

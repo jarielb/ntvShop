@@ -14,28 +14,39 @@ import {
     Input,
     Text,
     Button,
-    Label
+    Label,
+    Toast
 } from 'native-base';
 import Header from '../Navigation/Header'
 
 import {
     login,
     changeEmail,
-    changePassword
+    changePassword,
+    closeMessage
 } from "../../actions";
 
 class LoginScreen extends Component {
     static navigationOptions = {
-        title: "Login",
         header: null
     };
-
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.login_state.error) {
+            Toast.show({
+                text: nextProps.login_state.error,
+                position: 'bottom',
+                duration: 1500,
+                buttonText: 'Okay',
+                onClose: () => this.props.dispatch(closeMessage())
+            });
+        }
+    }
     render() {
         const { login_state } = this.props;
         const { message, email, password, error, token } = login_state;
             return (
                 <Container style={styles.container}>
-                <Header title="React Native"/>
+                <Header title="ntvShop"/>
                     <Content>
                         <Form style={styles.loginForm}>
                             <Item floatingLabel>

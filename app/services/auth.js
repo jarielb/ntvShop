@@ -7,7 +7,7 @@ class Auth extends API {
   }
 
   login (params) {
-    return this.post('/login', params)
+    return this.post('/user/login', params)
   }
 }
 
