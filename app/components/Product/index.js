@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { createStructuredSelector } from 'reselect';
-import { StyleSheet, Keyboard } from "react-native";
+import { StyleSheet, Keyboard, RefreshControl, FlatList } from "react-native";
 import {
     Container,
     Content,
@@ -29,12 +29,28 @@ class ProductScreen extends Component {
     }
     render() {
         const { product_state } = this.props;
-        const { message, products} = product_state;
+        const { message, products, refreshing} = product_state;
             return (
                 <Container>
                     <Header title="Products"/>
-                        <Content style={styles.content}>
-                            <Card data={products.docs}></Card>
+                        <Content 
+                            style={styles.content}
+                            refreshControl={
+                                <RefreshControl
+                                refreshing={refreshing}
+                                onRefresh={this.props.refreshProductsList}
+                                />
+                            }    
+                        >
+                        <FlatList
+                            data={products.docs}
+                            renderItem={
+                                ({item}) => <Card data={item}></Card>
+                            }
+                            keyExtractor={(item, _id) => _id.toString()}
+                        >
+                        
+                        </FlatList>
                         </Content>
                 </Container>
             );
@@ -45,6 +61,9 @@ class ProductScreen extends Component {
 export function mapDispatchToProps(dispatch) {
     return {
         getProductsList: () => {
+            dispatch(getProducts());
+        },
+        refreshProductsList: () => {
             dispatch(getProducts());
         },
         dispatch,
